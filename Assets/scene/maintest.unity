@@ -2185,7 +2185,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1263498993}
+  m_Mesh: {fileID: 764379012}
 --- !u!33 &623541696
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -4497,7 +4497,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349794888}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80cd282eae29c964fabb1e1e5050bb25, type: 3}
   m_Name: 
