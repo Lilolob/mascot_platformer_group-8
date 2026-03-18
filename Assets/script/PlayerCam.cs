@@ -24,14 +24,9 @@ public class PlayerCam : MonoBehaviour
     {
         // get mouse input
         // rotate cam and orientation
-        camHolder.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 
-    public void DoFov(float endValue)
-    {
-        GetComponent<Camera>().DOFieldOfView(endValue, 0.25f);
-    }
+
 
     public void DoTilt(float zTilt)
     {
