@@ -390,7 +390,6 @@ GameObject:
   - component: {fileID: 272944043}
   - component: {fileID: 272944042}
   - component: {fileID: 272944041}
-  - component: {fileID: 272944040}
   m_Layer: 0
   m_Name: GrappleGun
   m_TagString: Untagged
@@ -406,37 +405,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272944038}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.20106585, y: 2.140318e-17, z: -4.3931666e-18, w: 0.9795777}
-  m_LocalPosition: {x: -0, y: 0.736, z: 8.02}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalRotation: {x: -0, y: -0.000000029147962, z: 4.3034485e-18, w: 1}
+  m_LocalPosition: {x: 0, y: 0.51725817, z: 0.6614685}
+  m_LocalScale: {x: 0.3, y: 0.29999998, z: 0.29999998}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1956561344}
-  m_Father: {fileID: 1349794891}
+  m_Father: {fileID: 901413585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &272944040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272944038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fab21f1809af134baf7c2f4cc565f5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 1349794891}
-  gunTip: {fileID: 1956561344}
-  whatIsGrappleable:
-    serializedVersion: 2
-    m_Bits: 136
-  lr: {fileID: 272944041}
-  maxGrappleDistance: 50
-  grappleDelayTime: 0.25
-  overshootYAxis: 1
-  grapplingCd: 1
-  grappleKey: 101
 --- !u!120 &272944041
 LineRenderer:
   serializedVersion: 2
@@ -2802,6 +2778,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1656215107}
+  - {fileID: 272944039}
   m_Father: {fileID: 2113313031}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &920806661
@@ -6474,8 +6451,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 272944039}
+  m_Children: []
   m_Father: {fileID: 966499098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1349794892
@@ -11386,6 +11362,8 @@ GameObject:
   - component: {fileID: 2113313032}
   - component: {fileID: 2113313035}
   - component: {fileID: 2113313034}
+  - component: {fileID: 2113313037}
+  - component: {fileID: 2113313036}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -11537,6 +11515,52 @@ MonoBehaviour:
   slideForce: 10
   slideYScale: 0.5
   slideKey: 306
+--- !u!114 &2113313036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113313030}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fab21f1809af134baf7c2f4cc565f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1349794891}
+  gunTip: {fileID: 1956561344}
+  whatIsGrappleable:
+    serializedVersion: 2
+    m_Bits: 136
+  lr: {fileID: 272944041}
+  maxGrappleDistance: 50
+  grappleDelayTime: 0.25
+  overshootYAxis: 1
+  grapplingCd: 1
+  grappleKey: 101
+--- !u!114 &2113313037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113313030}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fab21f1809af134baf7c2f4cc565f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  gunTip: {fileID: 0}
+  whatIsGrappleable:
+    serializedVersion: 2
+    m_Bits: 0
+  lr: {fileID: 0}
+  maxGrappleDistance: 0
+  grappleDelayTime: 0
+  overshootYAxis: 0
+  grapplingCd: 0
+  grappleKey: 324
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
