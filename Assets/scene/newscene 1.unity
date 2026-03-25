@@ -11484,6 +11484,7 @@ MonoBehaviour:
     m_Bits: 8
   grounded: 0
   maxSlopeAngle: 45
+  testVar: {x: 1, y: 1, z: 1}
   cam: {fileID: 0}
   grappleFov: 95
   orientation: {fileID: 901413585}

@@ -48,9 +48,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
+    [Header("Grappling")]
+    public Vector3 testVar;
+
     [Header("Camera Effects")]
     public PlayerCam cam;
     public float grappleFov = 95f;
+
 
     public Transform orientation;
 
@@ -85,6 +89,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public bool activeGrapple;
     public bool swinging;
 
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -327,7 +332,10 @@ public class PlayerMovementAdvanced : MonoBehaviour
         activeGrapple = true;
 
         velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
-        Invoke(nameof(SetVelocity), 0.1f);
+        velocityToSet.x *= testVar.x;
+        velocityToSet.y *= testVar.y;
+        velocityToSet.z *= testVar.z;
+        Invoke(nameof(SetVelocity), 1.0f);
 
         Invoke(nameof(ResetRestrictions), 3f);
     }
