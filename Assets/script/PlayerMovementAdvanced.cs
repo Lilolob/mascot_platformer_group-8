@@ -287,30 +287,32 @@ public class PlayerMovementAdvanced : MonoBehaviour
         rb.useGravity = !OnSlope();
     }
 
-    private void SpeedControl()
-    {
-        // limiting speed on slope
-        if (OnSlope() && !exitingSlope)
-        {
-            if (rb.linearVelocity.magnitude > moveSpeed)
-                rb.linearVelocity = rb.linearVelocity.normalized * moveSpeed;
-        }
+	private void SpeedControl()
+	{
+		if (activeGrapple) return;
 
-        // limiting speed on ground or in air
-        else
-        {
-            Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+		// limiting speed on slope
+		if (OnSlope() && !exitingSlope)
+		{
+			if (rb.linearVelocity.magnitude > moveSpeed)
+				rb.linearVelocity = rb.linearVelocity.normalized * moveSpeed;
+		}
 
-            // limit velocity if needed
-            if (flatVel.magnitude > moveSpeed)
-            {
-                Vector3 limitedVel = flatVel.normalized * moveSpeed;
-                rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
-            }
-        }
-    }
+		// limiting speed on ground or in air
+		else
+		{
+			Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
-    private void Jump()
+			// limit velocity if needed
+			if (flatVel.magnitude > moveSpeed)
+			{
+				Vector3 limitedVel = flatVel.normalized * moveSpeed;
+				rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+			}
+		}
+	}
+
+	private void Jump()
     {
         exitingSlope = true;
 
@@ -340,8 +342,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
         Invoke(nameof(ResetRestrictions), 3f);
     }
 
-    private Vector3 velocityToSet;
-    private void SetVelocity()
+    public Vector3 velocityToSet;
+
+	private void SetVelocity()
     {
         enableMovementOnNextTouch = true;
         rb.linearVelocity = velocityToSet;
