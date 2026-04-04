@@ -6,6 +6,7 @@ public class Grappling : MonoBehaviour
 {
     [Header("References")]
     private PlayerMovementAdvanced pm;
+    private SwingingDone sw;
     public Transform cam;
     public Transform gunTip;
     public LayerMask whatIsGrappleable;
@@ -50,7 +51,9 @@ public class Grappling : MonoBehaviour
     {
         if (grapplingCdTimer > 0) return;
 
-        grappling = true;
+
+
+		grappling = true;
 
         pm.freeze = true;
 

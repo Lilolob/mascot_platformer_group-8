@@ -12,8 +12,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public float slideSpeed;
     public float wallrunSpeed;
     public float climbSpeed;
+    public float swingSpeed;
 
-    private float desiredMoveSpeed;
+	private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
 
     public float speedIncreaseMultiplier;
@@ -76,7 +77,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
         climbing,
         crouching,
         sliding,
-        air
+        swinging,
+		air
     }
 
     public bool sliding;
@@ -85,12 +87,11 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public bool freeze;
     public bool unlimited;
     public bool restricted;
+	public bool activeGrapple;
+	public bool swinging;
 
-    public bool activeGrapple;
-    public bool swinging;
 
-    
-    private void Start()
+	private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -210,9 +211,14 @@ public class PlayerMovementAdvanced : MonoBehaviour
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
         }
+        else if (swinging)
+        {
+            state = MovementState.swinging;
+            desiredMoveSpeed = swingSpeed;
+		}
 
-        // Mode - Air
-        else
+		// Mode - Air
+		else
         {
             state = MovementState.air;
             rb.AddForce(Vector3.down * gravityMultiplier, ForceMode.Acceleration);
@@ -261,7 +267,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (restricted) return;
+        if (activeGrapple) return;
+        if(swinging) return;
+		if (restricted) return;
         
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
