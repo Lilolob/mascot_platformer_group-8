@@ -6,7 +6,7 @@ public class ThirdPersonCam : MonoBehaviour
 {
     [Header("References")]
     public Transform orientation;
-    public Transform player;
+    public Transform focus;
     public Transform playerObj;
     public Rigidbody rb;
 
@@ -37,7 +37,7 @@ public class ThirdPersonCam : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchCameraStyle(CameraStyle.Combat);
 
         // rotate orientation
-        Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
+        Vector3 viewDir = focus.position - new Vector3(transform.position.x, focus.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
 
         // roate player object
