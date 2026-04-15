@@ -267,7 +267,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (activeGrapple) return;
         if(swinging) return;
 		if (restricted) return;
         
@@ -355,13 +354,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
 	private void SetVelocity()
     {
         enableMovementOnNextTouch = true;
-        rb.linearVelocity = velocityToSet;
+        rb.linearVelocity += velocityToSet;
 
         cam.DoFov(grappleFov);
     }
 
     public void ResetRestrictions()
-    {
+    {   
         activeGrapple = false;
         cam.DoFov(85f);
     }
