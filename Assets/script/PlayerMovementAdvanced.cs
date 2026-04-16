@@ -14,13 +14,15 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public float climbSpeed;
     public float swingSpeed;
 
-	private float desiredMoveSpeed;
+
+    private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
 
     public float speedIncreaseMultiplier;
     public float slopeIncreaseMultiplier;
     public float gravityMultiplier;
 
+    public float airDrag;
     public float groundDrag;
 
     [Header("Jumping")]
@@ -110,11 +112,12 @@ public class PlayerMovementAdvanced : MonoBehaviour
         SpeedControl();
         StateHandler();
 
+        
         // handle drag
         if (grounded)
             rb.linearDamping = groundDrag;
         else
-            rb.linearDamping = 0;
+            rb.linearDamping = airDrag;
     }
 
     private void FixedUpdate()
@@ -296,7 +299,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
 	private void SpeedControl()
 	{
-		if (activeGrapple) return;
+		if (activeGrapple && !grounded) return;
 
 		// limiting speed on slope
 		if (OnSlope() && !exitingSlope)
@@ -311,12 +314,18 @@ public class PlayerMovementAdvanced : MonoBehaviour
 			Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
 			// limit velocity if needed
-			if (flatVel.magnitude > moveSpeed)
+			if (flatVel.magnitude > moveSpeed && grounded)
 			{
 				Vector3 limitedVel = flatVel.normalized * moveSpeed;
 				rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
 			}
-		}
+
+            /*if (flatVel.magnitude > moveSpeed && !grounded)
+            {
+                Vector3 limitedVel = flatVel.normalized * airDrag;
+                rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+            }*/
+        }
 	}
 
 	private void Jump()
@@ -344,6 +353,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         velocityToSet.x *= testVar.x;
         velocityToSet.y *= testVar.y;
         velocityToSet.z *= testVar.z;
+
         Invoke(nameof(SetVelocity), 1.0f);
 
         Invoke(nameof(ResetRestrictions), 3f);
