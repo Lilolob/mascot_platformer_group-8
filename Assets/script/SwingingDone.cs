@@ -11,7 +11,7 @@ public class SwingingDone : MonoBehaviour
     public PlayerMovementAdvanced pm;
 
     [Header("Swinging")]
-    private float maxSwingDistance = 25f;
+    private float maxSwingDistance = 100f;
     private Vector3 swingPoint;
     private SpringJoint joint;
 
@@ -151,7 +151,7 @@ public class SwingingDone : MonoBehaviour
             joint.minDistance = distanceFromPoint * 0.25f;
         }
         // extend cable
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             float extendedDistanceFromPoint = Vector3.Distance(transform.position, swingPoint) + extendCableSpeed;
 

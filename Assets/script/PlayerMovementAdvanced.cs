@@ -86,9 +86,11 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public bool sliding;
     public bool wallrunning;
     public bool climbing;
+
     public bool freeze;
     public bool unlimited;
     public bool restricted;
+
 	public bool activeGrapple;
 	public bool swinging;
 
@@ -214,6 +216,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
             state = MovementState.walking;
             desiredMoveSpeed = walkSpeed;
         }
+
+        // Mode - Swinging
         else if (swinging)
         {
             state = MovementState.swinging;

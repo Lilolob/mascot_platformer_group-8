@@ -51,7 +51,10 @@ public class Grappling : MonoBehaviour
     {
         if (grapplingCdTimer > 0) return;
 
-		grappling = true;
+        // deactivate swinging
+        GetComponent<SwingingDone>().StopSwing();
+
+        grappling = true;
 
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, whatIsGrappleable))
