@@ -58,8 +58,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public PlayerCam cam;
     public float grappleFov = 95f;
 
+	public TextMeshProUGUI score;
 
-    public Transform orientation;
+	public Transform orientation;
 
     float horizontalInput;
     float verticalInput;
@@ -120,9 +121,18 @@ public class PlayerMovementAdvanced : MonoBehaviour
             rb.linearDamping = groundDrag;
         else
             rb.linearDamping = airDrag;
-    }
+		ScoreSystem();
+	}
+    
+    void ScoreSystem()
+    {
+        if (moveSpeed > 10)
+        {
+            //score.text = "Score: " + Round(rb.linearVelocity, 0);
+        }
+	}
 
-    private void FixedUpdate()
+	private void FixedUpdate()
     {
         MovePlayer();
     }
