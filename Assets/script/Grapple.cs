@@ -44,7 +44,7 @@ public class Grappling : MonoBehaviour
     private void LateUpdate()
     {
         if (grappling)
-            lr.SetPosition(0, gunTip.position);
+            DrawRope();
     }
 
     private void StartGrapple()
@@ -71,7 +71,7 @@ public class Grappling : MonoBehaviour
         }
 
         lr.enabled = true;
-        lr.SetPosition(1, grapplePoint);
+
     }
 
     private void ExecuteGrapple()
@@ -87,7 +87,11 @@ public class Grappling : MonoBehaviour
 
         Invoke(nameof(StopGrapple), 1f);
     }
-
+    private void DrawRope()
+    {
+        lr.SetPosition(0, gunTip.position);
+        lr.SetPosition(1, grapplePoint);
+    }
     public void StopGrapple()
     {
 

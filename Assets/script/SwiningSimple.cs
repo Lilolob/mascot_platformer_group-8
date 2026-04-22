@@ -6,7 +6,7 @@ public class SwingingSimple : MonoBehaviour
     public LineRenderer lr;
     public Transform gunTip, cam, player;
     public LayerMask whatIsGrappleable;
-
+    public PlayerMovementAdvanced pm;
 
     [Header("Swinging")]
     private float maxSwingDistance = 100f;
@@ -44,12 +44,15 @@ public class SwingingSimple : MonoBehaviour
             joint.maxDistance = distanceFromPoint * 0.8f;
             joint.minDistance = distanceFromPoint * 0.25f;
 
-            joint.spring = 4.5f;
-            joint.damper = 7f;
+            joint.spring = 10f;
+            joint.damper = 4f;
             joint.massScale = 4.5f;
 
+            pm.swinging = true;
+
             lr.positionCount = 2;
-            currentGrapplePosition = gunTip.position;
+
+            lr.enabled = true;
         }
     }
 
@@ -59,16 +62,16 @@ public class SwingingSimple : MonoBehaviour
         lr.positionCount = 0;
 
         Destroy(joint);
-    }
 
-    private Vector3 currentGrapplePosition;
+        pm.swinging = false;
+
+        lr.enabled = false;
+    }
     private void DrawRope()
     {
         if (!joint) return;
 
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, swingPoint, Time.deltaTime * 8f);
-
         lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, currentGrapplePosition);
+        lr.SetPosition(1, swingPoint);
     }
 }

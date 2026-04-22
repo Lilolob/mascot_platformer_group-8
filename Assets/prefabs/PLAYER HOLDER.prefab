@@ -81,6 +81,7 @@ MonoBehaviour:
   testVar: {x: 1, y: 1, z: 1}
   cam: {fileID: 0}
   grappleFov: 95
+  score: {fileID: 0}
   orientation: {fileID: 3320477054759840000}
   state: 1
   sliding: 0
@@ -647,7 +648,8 @@ Transform:
   m_LocalPosition: {x: -9.69, y: -1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7253333874200022133}
   m_Father: {fileID: 6508055229029256316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8900002888046076204
@@ -1115,8 +1117,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7253333874200022133}
+  m_Children: []
   m_Father: {fileID: 8251428723659516348}
   m_LocalEulerAnglesHint: {x: 23.199, y: 0, z: 0}
 --- !u!114 &8300897020518330304
@@ -2079,13 +2080,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9150929733981488436}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.06072788, y: -0.049777117, z: 0.0019092098, w: 0.9969106}
-  m_LocalPosition: {x: -0.502, y: 1.126, z: 4.931}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.5}
+  m_LocalRotation: {x: -0.060727898, y: -0.049777128, z: 0.0019092107, w: 0.99691063}
+  m_LocalPosition: {x: -0.5019997, y: 1.1260002, z: 4.9310007}
+  m_LocalScale: {x: 0.2, y: 0.19999999, z: 0.50000006}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8632646158931201731}
-  m_Father: {fileID: 328926026624850071}
+  m_Father: {fileID: 3036256651877027842}
   m_LocalEulerAnglesHint: {x: -7, y: 0, z: 0}
 --- !u!33 &1902078377100198697
 MeshFilter:

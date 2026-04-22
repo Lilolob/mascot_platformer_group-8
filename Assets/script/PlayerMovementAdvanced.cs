@@ -284,7 +284,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void MovePlayer()
     {
-        if(swinging) return;
 		if (restricted) return;
         
         // calculate movement direction
