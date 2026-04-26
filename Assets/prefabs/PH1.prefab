@@ -381,8 +381,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587567462306936838}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.048070673, y: 0.07952854, z: -0.0038396332, w: 0.9956655}
-  m_LocalPosition: {x: -9.69, y: 0.21944618, z: -6.939726}
+  m_LocalRotation: {x: 0.04549416, y: -0.00000002977147, z: 0.0000000013558318, w: 0.9989646}
+  m_LocalPosition: {x: -9.69, y: 49.291286, z: -3.16955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1544,7 +1544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2655098687949176376}
   m_Layer: 0
-  m_Name: PH UPD1
+  m_Name: PH1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
