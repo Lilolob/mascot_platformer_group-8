@@ -1,16 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class mainmenu : MonoBehaviour
+
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.None;
     }
 
-    // Update is called once per frame
-    void Update()
+    public string sceneName;
+    public void PlayGame()
     {
-        
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("QUIT");
+        Application.Quit();
     }
 }
