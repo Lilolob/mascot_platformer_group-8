@@ -9,9 +9,13 @@ public class SwingingSimple : MonoBehaviour
     public PlayerMovementAdvanced pm;
 
     [Header("Swinging")]
-    private float maxSwingDistance = 100f;
+    public float maxSwingDistance = 100f;
     private Vector3 swingPoint;
     private SpringJoint joint;
+
+    public float spring = 4.5f;
+    public float damper = 7f;
+    public float massScale = 4.5f;
 
 
     [Header("Input")]
@@ -44,9 +48,9 @@ public class SwingingSimple : MonoBehaviour
             joint.maxDistance = distanceFromPoint * 0.8f;
             joint.minDistance = distanceFromPoint * 0.25f;
 
-            joint.spring = 10f;
-            joint.damper = 4f;
-            joint.massScale = 4.5f;
+            joint.spring = spring;
+            joint.damper = damper;
+            joint.massScale = massScale;
 
             pm.swinging = true;
 
