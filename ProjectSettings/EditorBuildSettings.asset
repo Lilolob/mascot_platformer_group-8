@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
   - enabled: 1
-    path: Assets/scene/Tutorial.unity
+    path: Assets/scene/Levels/Tutorial.unity
     guid: 0d76c61f665f6484985d2944fc076979
   - enabled: 1
-    path: Assets/scene/MAINMENU.unity
+    path: Assets/scene/Menus/MAINMENU.unity
     guid: 701372f947046f648922ec55b7f20757
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 35845fe01580c41289b024647b1d1c53, type: 3}

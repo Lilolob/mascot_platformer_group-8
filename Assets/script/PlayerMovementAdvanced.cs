@@ -35,6 +35,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public float crouchSpeed;
     public float crouchYScale;
     private float startYScale;
+    
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -52,7 +53,10 @@ public class PlayerMovementAdvanced : MonoBehaviour
     private bool exitingSlope;
 
     [Header("Grappling")]
-    public Vector3 testVar;
+    public Vector3 GrappleForce;
+
+    [Header("Swinging")]
+    public float swingMultiplier;
 
     [Header("Camera Effects")]
     public PlayerCam cam;
@@ -195,7 +199,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
             desiredMoveSpeed = wallrunSpeed;
         }
         // Mode - Sliding
-        else if (sliding)
+        /*else if (sliding)
         {
             state = MovementState.sliding;
 
@@ -204,13 +208,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
             else
                 desiredMoveSpeed = sprintSpeed;
-        }
+        }*/
 
         // Mode - Crouching
         else if (Input.GetKey(crouchKey))
         {
             state = MovementState.crouching;
-            desiredMoveSpeed = crouchSpeed;
+            
         }
 
         // Mode - Sprinting
@@ -232,7 +236,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
         {
             state = MovementState.swinging;
             desiredMoveSpeed = swingSpeed;
-		}
+            rb.AddForce(Vector3.down * swingMultiplier , ForceMode.Acceleration);
+        }
 
 		// Mode - Air
 		else
@@ -283,7 +288,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     }
 
     private void MovePlayer()
-    {
+    {        
 		if (restricted) return;
         
         // calculate movement direction
@@ -363,9 +368,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
         activeGrapple = true;
 
         velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
-        velocityToSet.x *= testVar.x;
-        velocityToSet.y *= testVar.y;
-        velocityToSet.z *= testVar.z;
+        velocityToSet.x *= GrappleForce.x;
+        velocityToSet.y *= GrappleForce.y;
+        velocityToSet.z *= GrappleForce.z;
 
         Invoke(nameof(SetVelocity), 1.0f);
 

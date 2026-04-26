@@ -174,10 +174,10 @@ MonoBehaviour:
   active: 1
   skyType:
     m_OverrideState: 1
-    m_Value: 4
+    m_Value: 1
   cloudType:
-    m_OverrideState: 1
-    m_Value: 0
+    m_OverrideState: 0
+    m_Value: 1
   skyAmbientMode:
     m_OverrideState: 0
     m_Value: 1
@@ -230,7 +230,7 @@ MonoBehaviour:
     m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.8584906, g: 0.18095723, b: 0, a: 1}
+    m_Value: {r: 0, g: 0.5239704, b: 0.6037736, a: 1}
   maxFogDistance:
     m_OverrideState: 1
     m_Value: 1000
@@ -245,10 +245,10 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: -50
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 1000
+    m_Value: 200
   meanFreePath:
     m_OverrideState: 1
     m_Value: 80
