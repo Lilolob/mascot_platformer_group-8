@@ -5953,20 +5953,24 @@ PrefabInstance:
       value: -0.00383963
       objectReference: {fileID: 0}
     - target: {fileID: 1301030208504327487, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
+      propertyPath: jumpForce
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301030208504327487, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
       propertyPath: GrappleForce.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1301030208504327487, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
       propertyPath: GrappleForce.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1301030208504327487, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
       propertyPath: GrappleForce.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1301030208504327487, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
       propertyPath: gravityMultiplier
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3190575991644925472, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
       propertyPath: m_Name
@@ -5974,7 +5978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5286150005224512437, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
       propertyPath: rotationSpeed
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7678678477194170163, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6046,11 +6050,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8401072838320914221, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
       propertyPath: maxSwingDistance
-      value: 250
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8636885105382077520, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
       propertyPath: maxGrappleDistance
-      value: 250
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8905593838004182872, guid: fbe689680356bae4e8f0eca4bf185f3b, type: 3}
       propertyPath: m_LocalPosition.x
