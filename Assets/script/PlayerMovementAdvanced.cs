@@ -415,13 +415,11 @@ public class PlayerMovementAdvanced : MonoBehaviour
         enableMovementOnNextTouch = true;
         rb.linearVelocity += velocityToSet;
 
-        cam.DoFov(grappleFov);
     }
 
     public void ResetRestrictions()
     {   
         activeGrapple = false;
-        cam.DoFov(85f);
     }
 
     private void OnCollisionEnter(Collision collision)
