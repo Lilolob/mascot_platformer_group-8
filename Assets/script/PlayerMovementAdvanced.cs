@@ -62,7 +62,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public PlayerCam cam;
     public float grappleFov = 95f;
 
-	public TextMeshProUGUI score;
+	
 
 	public Transform orientation;
 
@@ -99,8 +99,12 @@ public class PlayerMovementAdvanced : MonoBehaviour
 	public bool activeGrapple;
 	public bool swinging;
 
-
-	private void Start()
+    [Header("Text Display")]
+    public TextMeshProUGUI text_speed;
+    public TextMeshProUGUI text_mode;
+    public TextMeshProUGUI text_score;
+    public TextMeshProUGUI text_speed_threshold;
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -128,14 +132,22 @@ public class PlayerMovementAdvanced : MonoBehaviour
 		ScoreSystem();
         TextStuff();
 	}
-    
+
+    private float score;
+   
     void ScoreSystem()
     {
-        if (moveSpeed > 10)
+        if (Round(rb.linearVelocity.magnitude, 1) > 50)
         {
-            //score.text = "Score: " + Round(rb.linearVelocity, 0);
+            score += Round(rb.linearVelocity.magnitude, 0);
+            text_score.text = "Scr: " + (score * 0.01);
+            text_speed_threshold.text = "Scoring!";
         }
-	}
+        else
+        {
+            text_speed_threshold.text = "Too Slow!";
+        }
+    }
 
 	private void FixedUpdate()
     {
@@ -434,17 +446,16 @@ public class PlayerMovementAdvanced : MonoBehaviour
     }
 
 
-	public TextMeshProUGUI text_speed;
-	public TextMeshProUGUI text_mode;
+	
 	private void TextStuff()
 	{
 		Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
-		if (OnSlope())
-			text_speed.SetText("Speed: " + Round(rb.linearVelocity.magnitude, 1) + " / " + Round(moveSpeed, 1));
+        if (OnSlope())
+            text_speed.SetText("Spd: " + Round(rb.linearVelocity.magnitude, 1)); // + " / " + Round(moveSpeed, 1));
 
-		else
-			text_speed.SetText("Speed: " + Round(flatVel.magnitude, 1) + " / " + Round(moveSpeed, 1));
+        else
+            text_speed.SetText("Spd: " + Round(flatVel.magnitude, 1)); //+ " / " + Round(moveSpeed, 1));
 
 		text_mode.SetText(state.ToString());
 	}
