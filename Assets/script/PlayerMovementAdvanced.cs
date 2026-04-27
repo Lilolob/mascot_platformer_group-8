@@ -126,6 +126,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         else
             rb.linearDamping = airDrag;
 		ScoreSystem();
+        TextStuff();
 	}
     
     void ScoreSystem()
@@ -199,7 +200,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
             desiredMoveSpeed = wallrunSpeed;
         }
         // Mode - Sliding
-        /*else if (sliding)
+        else if (sliding)
         {
             state = MovementState.sliding;
 
@@ -208,7 +209,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
             else
                 desiredMoveSpeed = sprintSpeed;
-        }*/
+        }
 
         // Mode - Crouching
         else if (Input.GetKey(crouchKey))
@@ -432,28 +433,28 @@ public class PlayerMovementAdvanced : MonoBehaviour
         return velocityXZ + velocityY;
     }
 
-    #region Text & Debugging
 
-    public TextMeshProUGUI text_speed;
-    public TextMeshProUGUI text_mode;
-    private void TextStuff()
-    {
-        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+	public TextMeshProUGUI text_speed;
+	public TextMeshProUGUI text_mode;
+	private void TextStuff()
+	{
+		Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
-        if (OnSlope())
-            text_speed.SetText("Speed: " + Round(rb.linearVelocity.magnitude, 1) + " / " + Round(moveSpeed, 1));
+		if (OnSlope())
+			text_speed.SetText("Speed: " + Round(rb.linearVelocity.magnitude, 1) + " / " + Round(moveSpeed, 1));
 
-        else
-            text_speed.SetText("Speed: " + Round(flatVel.magnitude, 1) + " / " + Round(moveSpeed, 1));
+		else
+			text_speed.SetText("Speed: " + Round(flatVel.magnitude, 1) + " / " + Round(moveSpeed, 1));
 
-        text_mode.SetText(state.ToString());
-    }
+		text_mode.SetText(state.ToString());
+	}
 
-    public static float Round(float value, int digits)
-    {
-        float mult = Mathf.Pow(10.0f, (float)digits);
-        return Mathf.Round(value * mult) / mult;
-    }
+	public static float Round(float value, int digits)
+	{
+		float mult = Mathf.Pow(10.0f, (float)digits);
+		return Mathf.Round(value * mult) / mult;
+	}
+	#region Text & Debugging
 
     #endregion
 }
