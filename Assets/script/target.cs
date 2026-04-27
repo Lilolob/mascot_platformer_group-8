@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class target : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+	public GameObject Player;
+	public float speedReq = 75;
+	public int damage = 10;
+	// Start is called once before the first execution of Update after the MonoBehaviour is created
+	void Start()
     {
         
     }
@@ -16,15 +19,14 @@ public class target : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("faggot");
-		if (other.GetComponent<PlayerMovementAdvanced>().overallSpeed > 35)
+		if (Player.GetComponent<PlayerMovementAdvanced>().overallSpeed > speedReq)
 		{
 			Destroy(gameObject);
 			Debug.Log("destroyed");
 		}
 		else
 		{
-			other.GetComponent<playerhealth>().health -= 10;
+			Player.GetComponent<PlayerMovementAdvanced>().health -= damage;
 			Destroy(gameObject);
 			Debug.Log("destroyed");
 		}

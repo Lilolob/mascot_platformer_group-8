@@ -62,7 +62,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public PlayerCam cam;
     public float grappleFov = 95f;
 
-	
+	public int health = 100;
 
 	public Transform orientation;
 
