@@ -104,6 +104,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public TextMeshProUGUI text_mode;
     public TextMeshProUGUI text_score;
     public TextMeshProUGUI text_speed_threshold;
+
+	public float overallSpeed = 100;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -131,23 +134,38 @@ public class PlayerMovementAdvanced : MonoBehaviour
             rb.linearDamping = airDrag;
 		ScoreSystem();
         TextStuff();
+        overallSpeed = rb.linearVelocity.magnitude;
 	}
 
     private float score;
    
     void ScoreSystem()
     {
-        if (Round(rb.linearVelocity.magnitude, 1) > 50)
-        {
-            score += Round(rb.linearVelocity.magnitude, 0);
-            text_score.text = "Scr: " + (score * 0.01);
-            text_speed_threshold.text = "Scoring!";
-        }
+        if (state == MovementState.swinging || state == MovementState.air)
+            if (Round(rb.linearVelocity.magnitude, 1) > 75)
+            {
+                score += Round(rb.linearVelocity.magnitude, 0);
+                text_score.text = "Scr: " + (score * 0.01);
+                text_speed_threshold.text = "Scoring!";
+            }
+            else
+            {
+                text_speed_threshold.text = "Too Slow!";
+            }
         else
         {
-            text_speed_threshold.text = "Too Slow!";
-        }
-    }
+			if (Round(rb.linearVelocity.magnitude, 1) > 35)
+			{
+				score += Round(rb.linearVelocity.magnitude, 0);
+				text_score.text = "Scr: " + (score * 0.01);
+				text_speed_threshold.text = "Scoring!";
+			}
+			else
+			{
+				text_speed_threshold.text = "Too Slow!";
+			}
+		}
+	}
 
 	private void FixedUpdate()
     {
@@ -457,7 +475,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         else
             text_speed.SetText("Spd: " + Round(flatVel.magnitude, 1)); //+ " / " + Round(moveSpeed, 1));
 
-		text_mode.SetText(state.ToString());
+		//text_mode.SetText(state.ToString());
 	}
 
 	public static float Round(float value, int digits)

@@ -13,4 +13,20 @@ public class target : MonoBehaviour
     {
         
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("faggot");
+		if (other.GetComponent<PlayerMovementAdvanced>().overallSpeed > 35)
+		{
+			Destroy(gameObject);
+			Debug.Log("destroyed");
+		}
+		else
+		{
+			other.GetComponent<playerhealth>().health -= 10;
+			Destroy(gameObject);
+			Debug.Log("destroyed");
+		}
+	}
 }
