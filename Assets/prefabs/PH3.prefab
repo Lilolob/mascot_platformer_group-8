@@ -29,12 +29,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665366958042891784}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.048070583, y: 0.079528525, z: -0.0038396253, w: 0.9956655}
-  m_LocalPosition: {x: 11.8, y: 6.6794434, z: -245.77972}
+  m_LocalRotation: {x: 0.03052495, y: 0, z: 0, w: 0.999534}
+  m_LocalPosition: {x: 11.8, y: 7.069725, z: -243.31337}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1251816490466479663}
+  m_Children: []
   m_Father: {fileID: 4138092037378229840}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8890081503333527267
@@ -314,13 +313,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708545928275777689}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.0848083, z: 0, w: 0.9963973}
-  m_LocalPosition: {x: -1.74, y: 0.167, z: 10.84}
-  m_LocalScale: {x: 0.2, y: 0.19999999, z: 0.50000006}
+  m_LocalRotation: {x: -0.017060574, y: -0.16361408, z: 0.0077402033, w: 0.9863465}
+  m_LocalPosition: {x: -3.8285563, y: 1.1340427, z: 12.801847}
+  m_LocalScale: {x: 0.20000002, y: 0.20000003, z: 0.5000002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 329367685464125081}
-  m_Father: {fileID: 5292919891616995873}
+  m_Father: {fileID: 1849736725521951256}
   m_LocalEulerAnglesHint: {x: 0, y: -9.73, z: 0}
 --- !u!33 &1044078278930025327
 MeshFilter:
@@ -701,6 +700,7 @@ MonoBehaviour:
   swingMultiplier: 15
   cam: {fileID: 0}
   grappleFov: 95
+  health: 100
   orientation: {fileID: 4680598218363263764}
   state: 1
   sliding: 0
@@ -715,6 +715,7 @@ MonoBehaviour:
   text_mode: {fileID: 0}
   text_score: {fileID: 612095828018302599}
   text_speed_threshold: {fileID: 7551464202202706355}
+  overallSpeed: 100
   velocityToSet: {x: 0, y: 0, z: 0}
 --- !u!54 &6645779995681851390
 Rigidbody:
@@ -1011,7 +1012,8 @@ Transform:
   m_LocalPosition: {x: 21.49, y: 8.679443, z: -249.77972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1251816490466479663}
   m_Father: {fileID: 5099609397345662562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4194748951788167221

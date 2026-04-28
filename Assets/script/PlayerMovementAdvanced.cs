@@ -54,6 +54,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     [Header("Grappling")]
     public Vector3 GrappleForce;
+    public bool playerGpCd;
+    public float playerGpCdTimer;
 
     [Header("Swinging")]
     public float swingMultiplier;
@@ -72,6 +74,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+    public Grappling gp;
 
     public MovementState state;
     public enum MovementState
@@ -104,8 +107,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public TextMeshProUGUI text_mode;
     public TextMeshProUGUI text_score;
     public TextMeshProUGUI text_speed_threshold;
+    public TextMeshProUGUI text_grapple;
 
-	public float overallSpeed = 100;
+    public float overallSpeed = 100;
 
     private void Start()
     {
@@ -125,15 +129,18 @@ public class PlayerMovementAdvanced : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
-
         
+        
+
         // handle drag
         if (grounded)
             rb.linearDamping = groundDrag;
         else
             rb.linearDamping = airDrag;
+
 		ScoreSystem();
         TextStuff();
+        CheckIfGrappleReady();
         overallSpeed = rb.linearVelocity.magnitude;
 	}
 
@@ -145,29 +152,38 @@ public class PlayerMovementAdvanced : MonoBehaviour
             if (Round(rb.linearVelocity.magnitude, 1) > 75)
             {
                 score += Round(rb.linearVelocity.magnitude, 0);
-                text_score.text = "Scr: " + (score * 0.01);
-                text_speed_threshold.text = "Scoring!";
+                text_score.text = "Score: " + (score * 0.01);
+                text_speed_threshold.text = "Lance: Rdy!";
             }
             else
             {
-                text_speed_threshold.text = "Too Slow!";
+                text_speed_threshold.text = "Lance: Nyr!";
             }
         else
         {
 			if (Round(rb.linearVelocity.magnitude, 1) > 35)
 			{
 				score += Round(rb.linearVelocity.magnitude, 0);
-				text_score.text = "Scr: " + (score * 0.01);
-				text_speed_threshold.text = "Scoring!";
+				text_score.text = "Score: " + (score * 0.01);
+				text_speed_threshold.text = "Lance: Rdy!";
 			}
 			else
 			{
-				text_speed_threshold.text = "Too Slow!";
+				text_speed_threshold.text = "Lance: Nry!";
 			}
 		}
 	}
 
-	private void FixedUpdate()
+    
+    void CheckIfGrappleReady()
+    {
+        if (playerGpCd == false)
+            text_grapple.text = "Grapple: " + Round(playerGpCdTimer, 1) + "s";
+        else
+            text_grapple.text = "Grapple: Rdy!";
+    }
+
+    private void FixedUpdate()
     {
         MovePlayer();
     }
@@ -468,10 +484,10 @@ public class PlayerMovementAdvanced : MonoBehaviour
 		Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
         if (OnSlope())
-            text_speed.SetText("Spd: " + Round(rb.linearVelocity.magnitude, 1)); // + " / " + Round(moveSpeed, 1));
+            text_speed.SetText("Speed: " + Round(rb.linearVelocity.magnitude, 1)); // + " / " + Round(moveSpeed, 1));
 
         else
-            text_speed.SetText("Spd: " + Round(flatVel.magnitude, 1)); //+ " / " + Round(moveSpeed, 1));
+            text_speed.SetText("Speed: " + Round(flatVel.magnitude, 1)); //+ " / " + Round(moveSpeed, 1));
 
 		//text_mode.SetText(state.ToString());
 	}

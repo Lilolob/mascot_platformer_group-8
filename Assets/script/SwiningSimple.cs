@@ -35,6 +35,8 @@ public class SwingingSimple : MonoBehaviour
 
     private void StartSwing()
     {
+        GetComponent<Grappling>().StopGrapple();
+
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxSwingDistance, whatIsGrappleable))
         {

@@ -6,7 +6,6 @@ public class Grappling : MonoBehaviour
 {
     [Header("References")]
     private PlayerMovementAdvanced pm;
-    private SwingingDone sw;
     public Transform cam;
     public Transform gunTip;
     public LayerMask whatIsGrappleable;
@@ -21,12 +20,14 @@ public class Grappling : MonoBehaviour
 
     [Header("Cooldown")]
     public float grapplingCd;
-    private float grapplingCdTimer;
+    public float grapplingCdTimer;
+    public bool grapplingCdBool;
 
     [Header("Input")]
     public KeyCode grappleKey = KeyCode.Mouse1;
 
     private bool grappling;
+
 
     private void Start()
     {
@@ -38,7 +39,17 @@ public class Grappling : MonoBehaviour
         if (Input.GetKeyDown(grappleKey)) StartGrapple();
 
         if (grapplingCdTimer > 0)
+        {
             grapplingCdTimer -= Time.deltaTime;
+            pm.playerGpCdTimer = grapplingCdTimer;
+            grapplingCdBool = false;
+            pm.playerGpCd = grapplingCdBool;
+        }
+        else
+        {
+            grapplingCdBool = true;
+            pm.playerGpCd = grapplingCdBool;
+        }
     }
 
     private void LateUpdate()
@@ -49,10 +60,10 @@ public class Grappling : MonoBehaviour
 
     private void StartGrapple()
     {
-        if (grapplingCdTimer > 0) return;
+        if (grapplingCdBool == false) return;
 
         // deactivate swinging
-        GetComponent<SwingingDone>().StopSwing();
+        GetComponent<SwingingSimple>().StopSwing();
 
         grappling = true;
 
@@ -62,6 +73,8 @@ public class Grappling : MonoBehaviour
             grapplePoint = hit.point;
 
             Invoke(nameof(ExecuteGrapple), grappleDelayTime);
+            lr.enabled = true;
+            grapplingCdTimer = grapplingCd;
         }
         else
         {
@@ -70,8 +83,7 @@ public class Grappling : MonoBehaviour
             Invoke(nameof(StopGrapple), grappleDelayTime);
         }
 
-        lr.enabled = true;
-
+        
     }
 
     private void ExecuteGrapple()
@@ -96,9 +108,6 @@ public class Grappling : MonoBehaviour
     {
 
         grappling = false;
-
-        grapplingCdTimer = grapplingCd;
-
         lr.enabled = false;
     }
 
