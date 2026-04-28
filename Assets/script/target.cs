@@ -21,6 +21,7 @@ public class target : MonoBehaviour
     {
 		if (Player.GetComponent<PlayerMovementAdvanced>().overallSpeed > speedReq)
 		{
+			Player.GetComponent<PlayerMovementAdvanced>().score += 1000;
 			Destroy(gameObject);
 			Debug.Log("destroyed");
 		}
