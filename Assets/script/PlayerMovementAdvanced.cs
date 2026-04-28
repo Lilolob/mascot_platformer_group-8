@@ -144,8 +144,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
         overallSpeed = rb.linearVelocity.magnitude;
 	}
 
-    private float score;
-   
+    public float score;
+
     void ScoreSystem()
     {
         if (state == MovementState.swinging || state == MovementState.air)
@@ -153,27 +153,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
             {
                 score += Round(rb.linearVelocity.magnitude, 0);
                 text_score.text = "Score: " + (score * 0.01);
-                text_speed_threshold.text = "Lance: Rdy!";
+                text_speed_threshold.text = "Lance: ON!";
             }
             else
             {
-                text_speed_threshold.text = "Lance: Nyr!";
+                text_speed_threshold.text = "Lance: OFF!";
             }
-        else
-        {
-			if (Round(rb.linearVelocity.magnitude, 1) > 35)
-			{
-				score += Round(rb.linearVelocity.magnitude, 0);
-				text_score.text = "Score: " + (score * 0.01);
-				text_speed_threshold.text = "Lance: Rdy!";
-			}
-			else
-			{
-				text_speed_threshold.text = "Lance: Nry!";
-			}
-		}
-	}
-
+    }
     
     void CheckIfGrappleReady()
     {
