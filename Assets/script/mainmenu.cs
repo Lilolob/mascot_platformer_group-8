@@ -10,8 +10,17 @@ public class mainmenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
     }
+    
+    public void Update()
+    {
+		Cursor.lockState = CursorLockMode.None;
+		if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+	}
 
-    public string sceneName;
+	public string sceneName;
     public void PlayGame()
     {
         SceneManager.LoadScene(sceneName);

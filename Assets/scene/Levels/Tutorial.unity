@@ -766,6 +766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: holder enemy 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1196812849480896984, guid: 1e46a34ae2c94d042a3984e8fe2e6b51, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 7103212075114782102}
     - target: {fileID: 2944164129669618085, guid: 1e46a34ae2c94d042a3984e8fe2e6b51, type: 3}
       propertyPath: m_LocalScale.x
       value: 20
@@ -6276,27 +6280,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.6794434
+      value: 7.069725
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -245.77972
+      value: -243.31337
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9956655
+      value: 0.999534
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.048070583
+      value: 0.03052495
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.079528525
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0038396253
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8460185343565132007, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: wallClimbSpeed
@@ -6311,6 +6315,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
+--- !u!1 &7103212075114782102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1525262470942163274, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
+  m_PrefabInstance: {fileID: 7103212075114782101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -144,22 +144,32 @@ public class PlayerMovementAdvanced : MonoBehaviour
         overallSpeed = rb.linearVelocity.magnitude;
 	}
 
-    public float score;
-
+      public float score;
+   
     void ScoreSystem()
     {
-        if (state == MovementState.swinging || state == MovementState.air)
-            if (Round(rb.linearVelocity.magnitude, 1) > 75)
+        if (state == MovementState.swinging || state == MovementState.air) //checks if is in the air so player in the air farm points
+            if (Round(rb.linearVelocity.magnitude, 1) > 75) //increases the speed needed to get points while in the air
             {
-                score += Round(rb.linearVelocity.magnitude, 0);
-                text_score.text = "Score: " + (score * 0.01);
-                text_speed_threshold.text = "Lance: ON!";
+                score += Round(rb.linearVelocity.magnitude, 0); //adds speed to score, the faster the player is going the more points they get
+				text_score.text = "Score: " + (score * 0.01); //dispays score, divdes so it doesnt get too high
+				text_speed_threshold.text = "Lance: ON!"; //shows you can kill enemies
             }
             else
             {
-                text_speed_threshold.text = "Lance: OFF!";
+                text_speed_threshold.text = "Lance: OFF!"; //shows you cannot kill enemies
             }
-    }
+        else
+        {
+			if (Round(rb.linearVelocity.magnitude, 1) > 35) // lower speed requirement so you can get points while on the ground, but still encourages you to go fast
+			{
+				score += Round(rb.linearVelocity.magnitude, 0); //
+				text_score.text = "Score: " + (score * 0.01);
+			}
+
+		}
+	}
+
     
     void CheckIfGrappleReady()
     {
@@ -205,13 +215,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void StateHandler()
     {
-        if (freeze)
-        {
+        if (freeze) // is not used but is required to fuction please dont remove
+		{
             state = MovementState.freeze;
             rb.linearVelocity = Vector3.zero;
         } 
         
-        else if (unlimited)
+        else if (unlimited) // is not used but is required to fuction please dont remove
         {
             state = MovementState.unlimited;
             moveSpeed = 999f;
