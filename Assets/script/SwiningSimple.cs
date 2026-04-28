@@ -23,51 +23,48 @@ public class SwingingSimple : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(swingKey)) StartSwing();
-        if (Input.GetKeyUp(swingKey)) StopSwing();
+        if (Input.GetKeyDown(swingKey)) StartSwing(); // swing key input
+        if (Input.GetKeyUp(swingKey)) StopSwing(); // stops swinging when the swing key is released
     }
 
     private void LateUpdate()
     {
-        DrawRope();
+        DrawRope(); // draws a rope when swinging is enabled
     }
-
 
     private void StartSwing()
     {
-        GetComponent<Grappling>().StopGrapple();
-
-        RaycastHit hit;
+        GetComponent<Grappling>().StopGrapple(); // Stops the grapple function if the player is currently grappling, so that swinging and grappling don't interfere
+    
+        RaycastHit hit; // creates a straight line in the direction the camera is facing
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxSwingDistance, whatIsGrappleable))
         {
             swingPoint = hit.point;
-            joint = player.gameObject.AddComponent<SpringJoint>();
-            joint.autoConfigureConnectedAnchor = false;
-            joint.connectedAnchor = swingPoint;
 
-            float distanceFromPoint = Vector3.Distance(player.position, swingPoint);
+            joint = player.gameObject.AddComponent<SpringJoint>(); // adds a spring joint to the player
+            joint.autoConfigureConnectedAnchor = false; // stops the anchor point from being  automatically set
+            joint.connectedAnchor = swingPoint; // sets the anchor point of the joint to the raycast hit point
 
-            joint.maxDistance = distanceFromPoint * 0.85f;
-            joint.minDistance = distanceFromPoint * 0.65f;
+            float distanceFromPoint = Vector3.Distance(player.position, swingPoint); // calculates the distance between the player and the hit point
 
-            joint.spring = spring;
-            joint.damper = damper;
-            joint.massScale = massScale;
+            joint.maxDistance = distanceFromPoint * 0.85f; // sets the maximum distance the join can extend to 85% of the distance between the player and the hit point
+            joint.minDistance = distanceFromPoint * 0.65f; 
 
-            pm.swinging = true;
+            joint.spring = spring; // sets the strength of the spring to keep the player attached to the swing point
+            joint.damper = damper; // sets the damping of the spring to reduce the strenght of the spring force
+            joint.massScale = massScale; // not fully sure what this value does but it makes the swing feel more weighty
 
-            lr.positionCount = 2;
-
-            lr.enabled = true;
+            pm.swinging = true; // puts the player into swining mode
+            lr.positionCount = 2; // sets the number of positions of the line renderer to two
+            lr.enabled = true; // enables the line renderer to make 
         }
     }
 
     public void StopSwing()
     {
-
         lr.positionCount = 0;
 
-        Destroy(joint);
+        Destroy(joint); // destroys the joint component, so that the player is no longer attached to the swing point
 
         pm.swinging = false;
 
@@ -75,9 +72,9 @@ public class SwingingSimple : MonoBehaviour
     }
     private void DrawRope()
     {
-        if (!joint) return;
+        if (!joint) return; // if no joint was created, this function will stop as we don't want to draw a rope 
 
-        lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, swingPoint);
+        lr.SetPosition(0, gunTip.position); // sets the first position of the line renderer to the position of the grapple gun tip
+        lr.SetPosition(1, swingPoint); // sets the second position of the line renderer to the position of the previously established swing point
     }
 }
