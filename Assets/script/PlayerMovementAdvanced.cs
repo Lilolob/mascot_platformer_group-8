@@ -410,14 +410,14 @@ public class PlayerMovementAdvanced : MonoBehaviour
     {
         activeGrapple = true;
 
-        velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
-        velocityToSet.x *= GrappleForce.x;
+        velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight); // gives the player velocity depending on where the target position is and how high the trajectory of the jump should be
+        velocityToSet.x *= GrappleForce.x; // multipliers for modyfying the grapple jump force directly from Unity
         velocityToSet.y *= GrappleForce.y;
         velocityToSet.z *= GrappleForce.z;
 
-        Invoke(nameof(SetVelocity), 1.0f);
+        Invoke(nameof(SetVelocity), 1.0f); // gives velocity to the player after a delay
 
-        Invoke(nameof(ResetRestrictions), 3f);
+        Invoke(nameof(ResetRestrictions), 3f); // resets any restrictions applied on the player
     }
 
     public Vector3 velocityToSet;
@@ -460,7 +460,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
 
-    public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight) // this function was taken from an online tutorial, I can half-understand how it works but not fully 
     {
         float gravity = Physics.gravity.y; //grabs gravity
         float displacementY = endPoint.y - startPoint.y;
@@ -493,6 +493,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 		float mult = Mathf.Pow(10.0f, (float)digits);
 		return Mathf.Round(value * mult) / mult;
 	}
+
 	#region Text & Debugging
 
     #endregion
