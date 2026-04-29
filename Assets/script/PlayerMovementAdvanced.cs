@@ -305,8 +305,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private IEnumerator SmoothlyLerpMoveSpeed()
     {
-        // smoothly lerp movementSpeed to desired value
-        float time = 0;
+		// fixes movement speed when landing from a jump
+		float time = 0;
         float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
         float startValue = moveSpeed;
 
@@ -327,7 +327,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
             yield return null;
         }
 
-        moveSpeed = desiredMoveSpeed;
+        moveSpeed = desiredMoveSpeed; // fixes movement speed
     }
 
     private void MovePlayer()
@@ -444,7 +444,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
             GetComponent<Grappling>().StopGrapple();
         }
     }
-    public bool OnSlope()
+    public bool OnSlope() //changes speed when on a slope to allow you to go faster but only at certain angles
     {
         if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
         {
@@ -455,14 +455,14 @@ public class PlayerMovementAdvanced : MonoBehaviour
         return false;
     }
 
-    public Vector3 GetSlopeMoveDirection(Vector3 direction)
+    public Vector3 GetSlopeMoveDirection(Vector3 direction) 
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
 
     public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
     {
-        float gravity = Physics.gravity.y;
+        float gravity = Physics.gravity.y; //grabs gravity
         float displacementY = endPoint.y - startPoint.y;
         Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
 

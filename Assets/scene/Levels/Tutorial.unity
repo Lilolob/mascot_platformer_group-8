@@ -6278,33 +6278,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6075637497670821281, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
+      propertyPath: maxGrappleDistance
+      value: 750
+      objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.069725
+      value: 6.6794434
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -243.31337
+      value: -245.77972
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.999534
+      value: 0.9956655
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.03052495
+      value: 0.048070583
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.079528525
       objectReference: {fileID: 0}
     - target: {fileID: 6684267833294262651, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.0038396253
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460185343565132007, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
+      propertyPath: maxWallRunTime
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 8460185343565132007, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: wallClimbSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460185343565132007, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
+      propertyPath: whatIsWall.m_Bits
+      value: 136
       objectReference: {fileID: 0}
     - target: {fileID: 8549945396497643974, guid: 6a262ee1e095a964e9325d6385f35b76, type: 3}
       propertyPath: gravityMultiplier

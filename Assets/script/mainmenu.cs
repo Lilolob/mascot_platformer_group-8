@@ -8,8 +8,8 @@ public class mainmenu : MonoBehaviour
 {
     public void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
-    }
+        Cursor.lockState = CursorLockMode.None; // Unlock the cursor when the main menu is active
+	}
     
     public void Update()
     {
@@ -18,6 +18,10 @@ public class mainmenu : MonoBehaviour
         {
             Application.Quit();
         }
+        else if (Input.GetKeyDown(KeyCode.Return))
+        {
+            PlayGame();
+		}
 	}
 
 	public string sceneName;
